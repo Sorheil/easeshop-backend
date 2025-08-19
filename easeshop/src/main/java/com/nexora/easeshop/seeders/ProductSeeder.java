@@ -36,7 +36,7 @@ public class ProductSeeder implements CommandLineRunner {
 
         // Lecture du JSON
         var resource = new ClassPathResource("products.json");
-        String json = Files.readString(resource.getFile().toPath());
+        String json = new String(resource.getInputStream().readAllBytes());
 
         // Conversion en liste de ProductDTO
         List<ProductDTO> productDTOList = objectMapper.readValue(json, new TypeReference<>() {});
